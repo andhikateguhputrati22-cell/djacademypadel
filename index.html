@@ -47,7 +47,7 @@
 <div class="line"><span>Paket</span><strong id="sumPackage">-</strong></div>
 <div class="line"><span>Pemain</span><strong id="sumPlayers">1 pemain</strong></div>
 <div class="line" id="normalLine"><span>Normal</span><strong id="sumNormal" class="strike">-</strong></div>
-<div class="line" id="savingLine"><span>Hemat</span><strong id="sumSaving">-</strong></div>
+<div class="line" id="savingLine"><span>Savings</span><strong id="sumSaving">-</strong></div>
 <div class="line"><span>Total</span><b id="sumTotal">Rp0</b></div>
 </div>
 <button class="wa" type="submit">Kirim ke WhatsApp</button>
@@ -88,7 +88,7 @@ function renderPackages(){
 packageSelect.innerHTML="";singleList.innerHTML="";bundleList.innerHTML="";
 packages.forEach(pkg=>{
 let option=document.createElement("option");option.value=pkg.id;option.textContent=`${pkg.title} - ${pkg.sessions} sesi`;packageSelect.appendChild(option);
-let discount=pkg.original?`<div class="disc"><span class="old">${fmt(pkg.original[1])}</span><span class="save">Hemat ${fmt(pkg.original[1]-pkg.prices[1])}</span></div>`:"";
+let discount=pkg.original?`<div class="disc"><span class="old">${fmt(pkg.original[1])}</span><span class="save">Save ${fmt(pkg.original[1]-pkg.prices[1])}</span></div>`:"";
 let card=document.createElement("article");card.className="pkg";card.style.setProperty("--accent",pkg.accent);
 card.innerHTML=`<div class="pkg-top"><h3>${pkg.title}</h3><span class="session">${pkg.sessions} sesi</span></div><div class="price">${fmt(pkg.prices[1])}</div>${discount}<p class="desc">${pkg.hours} • ${pkg.desc}</p><button class="choose" type="button" data-id="${pkg.id}">Pilih</button>`;
 (pkg.type==="Satuan"?singleList:bundleList).appendChild(card);
@@ -108,7 +108,7 @@ document.getElementById("bookingForm").onsubmit=e=>{
 e.preventDefault();
 let pkg=selectedPackage(),count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
 let name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),date=document.getElementById("date").value||"Belum ditentukan",time=document.getElementById("time").value||"Belum ditentukan",level=document.getElementById("level").value,notes=document.getElementById("notes").value.trim()||"-";
-let discountText=normal?`Harga normal: ${fmt(normal)}\nHemat: ${fmt(normal-total)}\n`:"";
+let discountText=normal?`Harga normal: ${fmt(normal)}\nSavings: ${fmt(normal-total)}\n`:"";
 let text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nLevel: ${level}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
 location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
 };
