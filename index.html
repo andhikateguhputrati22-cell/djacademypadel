@@ -31,7 +31,7 @@
 </section>
 
 <div class="head"><h2>Paket Coaching</h2><span>Belum termasuk court fee</span></div>
-<div class="tabs"><button class="tab active" id="tabSingle" type="button">Satuan</button><button class="tab" id="tabBundle" type="button">Bundle</button></div>
+<div class="tabs"><button class="tab active" id="tabSingle" type="button">Single Sesssion</button><button class="tab" id="tabBundle" type="button">Bundle</button></div>
 <section id="singleList" class="cards"></section>
 <section id="bundleList" class="cards hide"></section>
 
@@ -68,7 +68,7 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.se
 const adminWa="62882008255252";
 const fmt=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n).replace("IDR","Rp");
 const packages=[
-{id:"single",type:"Single Session",title:"1 Session",sessions:1,hours:"60 menit",desc:"Sesi reguler untuk latihan singkat dan fokus.",prices:{1:150000,2:200000,3:250000,4:300000},original:null,accent:"#d7eb14"},
+{id:"single",type:"Satuan",title:"1 Session",sessions:1,hours:"60 menit",desc:"Sesi reguler untuk latihan singkat dan fokus.",prices:{1:150000,2:200000,3:250000,4:300000},original:null,accent:"#d7eb14"},
 {id:"starter",type:"Bundle",title:"Starter Package",sessions:4,hours:"4 jam",desc:"Cocok untuk pemain pemula yang ingin mengenal dasar-dasar padel.",prices:{1:550000,2:750000,3:950000,4:1150000},original:{1:600000,2:800000,3:1000000,4:1200000},accent:"#84b400"},
 {id:"development",type:"Bundle",title:"Development Package",sessions:8,hours:"8 jam",desc:"Cocok untuk meningkatkan teknik dan konsistensi permainan.",prices:{1:1000000,2:1400000,3:1800000,4:2200000},original:{1:1200000,2:1600000,3:2000000,4:2400000},accent:"#0f4b8f"},
 {id:"performance",type:"Bundle",title:"Performance Package",sessions:12,hours:"12 jam",desc:"Cocok untuk berkembang lebih cepat dan persiapan social tournament/kompetisi.",prices:{1:1400000,2:2000000,3:2600000,4:3200000},original:{1:1800000,2:2400000,3:3000000,4:3600000},accent:"#f06a00"},
