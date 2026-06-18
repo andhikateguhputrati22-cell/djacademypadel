@@ -28,6 +28,12 @@
 @media(min-width:420px){.cards.horizontal .pkg{flex:0 0 45%;min-width:240px;min-height:260px}}
 @media(min-width:760px){.cards.horizontal .pkg{flex:0 0 22%;min-width:220px;min-height:240px}}
 </style>
+<style>
+.pkg.selected{outline:3px solid rgba(215,235,20,0.14);box-shadow:0 18px 40px rgba(0,0,0,0.36),0 6px 18px rgba(215,235,20,0.06);transform:translateY(-6px)}
+.pkg{transition:transform .18s ease,box-shadow .18s ease,outline .18s ease}
+.pkg .choose{transition:background .12s ease}
+</style>
+</style>
 </head>
 <body>
 <main class="app">
@@ -103,10 +109,27 @@ packages.forEach(pkg=>{
 let discount=pkg.original?`<div class="disc"><span class="old">${fmt(pkg.original[1])}</span><span class="save">Save ${fmt(pkg.original[1]-pkg.prices[1])}</span></div>`:"";
 let card=document.createElement("article");card.className="pkg";card.style.setProperty("--accent",pkg.accent);
 card.innerHTML=`<div class="pkg-top"><h3>${pkg.title}</h3><span class="session">${pkg.sessions} sesi</span></div><div class="price">${fmt(pkg.prices[1])}</div>${discount}<p class="desc">${pkg.hours} • ${pkg.desc}</p><button class="choose" type="button" data-id="${pkg.id}">Pilih</button>`;
+card.dataset.id = pkg.id;
 (pkg.type==="Satuan"?singleList:bundleList).appendChild(card);
+// make the whole card clickable and interactive
+card.addEventListener('click', (e)=>{
+  // prevent double-trigger when clicking the internal button
+  if(e.target && e.target.closest('button')) return;
+  packageSelect.value = pkg.id;
+  updateSummary();
+  toggleBooking(true);
+  updateCardSelection();
+  card.scrollIntoView({behavior:'smooth',inline:'center'});
+});
 });
  renderPackageOptions();
 document.querySelectorAll(".choose").forEach(btn=>btn.addEventListener("click",()=>{packageSelect.value=btn.dataset.id;updateSummary();toggleBooking(true);document.getElementById("booking").scrollIntoView({behavior:"smooth",block:"start"})}));
+}
+
+function updateCardSelection(){
+  document.querySelectorAll('.pkg').forEach(c=>{
+    c.classList.toggle('selected', c.dataset.id===packageSelect.value);
+  });
 }
 function renderPackageOptions(){
   packageSelect.innerHTML="";
@@ -129,7 +152,7 @@ sumTotal.textContent=fmt(total);stickyTotal.textContent=fmt(total);
 }
 document.getElementById("tabSingle").onclick=()=>{tabSingle.classList.add("active");tabBundle.classList.remove("active");singleList.classList.remove("hide");bundleList.classList.add("hide");activeTab="single";renderPackageOptions();updateSummary()};
 document.getElementById("tabBundle").onclick=()=>{tabBundle.classList.add("active");tabSingle.classList.remove("active");bundleList.classList.remove("hide");singleList.classList.add("hide");activeTab="bundle";renderPackageOptions();updateSummary()};
-packageSelect.onchange=()=>{updateSummary();toggleBooking(true)};players.onchange=updateSummary;
+packageSelect.onchange=()=>{updateSummary();toggleBooking(true);updateCardSelection()};players.onchange=updateSummary;
 document.getElementById("bookingForm").onsubmit=e=>{
 e.preventDefault();
 let pkg=selectedPackage(),count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
