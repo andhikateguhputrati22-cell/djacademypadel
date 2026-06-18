@@ -112,18 +112,12 @@ card.innerHTML=`<div class="pkg-top"><h3>${pkg.title}</h3><span class="session">
 card.dataset.id = pkg.id;
 (pkg.type==="Satuan"?singleList:bundleList).appendChild(card);
 // make the whole card clickable and interactive
-card.addEventListener('click', (e)=>{
-  // prevent double-trigger when clicking the internal button
-  if(e.target && e.target.closest('button')) return;
-  packageSelect.value = pkg.id;
-  updateSummary();
-  toggleBooking(true);
-  updateCardSelection();
-  card.scrollIntoView({behavior:'smooth',inline:'center'});
-});
+  card.addEventListener('click', ()=>{
+    location.href = `booking.html?pkg=${pkg.id}`;
+  });
 });
  renderPackageOptions();
-document.querySelectorAll(".choose").forEach(btn=>btn.addEventListener("click",()=>{packageSelect.value=btn.dataset.id;updateSummary();toggleBooking(true);document.getElementById("booking").scrollIntoView({behavior:"smooth",block:"start"})}));
+document.querySelectorAll(".choose").forEach(btn=>btn.addEventListener("click",(e)=>{e.stopPropagation();location.href = `booking.html?pkg=${btn.dataset.id}`}));
 }
 
 function updateCardSelection(){

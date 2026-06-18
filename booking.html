@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Booking - DJ Academy</title>
+<link rel="icon" href="favicon.ico">
+<style>
+:root{--lime:#d7eb14;--muted:#9aa6b5;--text:#0f172a}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:linear-gradient(180deg,#050505,#071018);color:#fff;padding:20px}
+.container{max-width:480px;margin:0 auto}
+.card{background:#fff;color:var(--text);border-radius:16px;padding:14px;margin-bottom:12px}
+.h1{font-size:20px;margin:8px 0}
+small{color:var(--muted)}
+label{display:block;margin-top:10px;margin-bottom:6px;font-weight:700;color:#111}
+input,select,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #e6edf2}
+.summary{background:#f8fafc;padding:10px;border-radius:10px;margin-top:10px}
+.button{display:inline-block;background:var(--lime);color:#111;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:900}
+.back{color:#cbd5e1;display:inline-block;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← Kembali</a>
+<div id="pkgCard" class="card">
+  <small id="pkgType"></small>
+  <div class="h1" id="pkgTitle">-</div>
+  <div id="pkgDesc" style="color:#4b5563;margin-top:6px"></div>
+  <div id="pkgPrice" style="font-weight:900;margin-top:10px;color:var(--lime)"></div>
+</div>
+<form id="bookingForm" class="card">
+  <label for="name">Nama</label>
+  <input id="name" autocomplete="name" placeholder="Nama pemesan" required>
+  <label for="phone">No. WhatsApp</label>
+  <input id="phone" inputmode="tel" placeholder="08123456789" required>
+  <label for="players">Pemain</label>
+  <select id="players"><option value="1">1 pemain</option><option value="2">2 pemain</option><option value="3">3 pemain</option><option value="4">4 pemain</option></select>
+  <label for="date">Tanggal</label>
+  <input id="date" type="date">
+  <label for="time">Jam</label>
+  <input id="time" type="time">
+  <label for="level">Kategori</label>
+  <select id="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Not sure</option></select>
+  <label for="notes">Catatan</label>
+  <textarea id="notes" placeholder="Opsional"></textarea>
+  <div class="summary">
+    <div><small>Paket</small><div id="sumPackage">-</div></div>
+    <div style="margin-top:6px"><small>Total</small><div id="sumTotal">Rp0</div></div>
+  </div>
+  <div style="margin-top:12px;text-align:right">
+    <button id="submitBtn" class="button" type="submit">Kirim ke WhatsApp</button>
+  </div>
+</form>
+</div>
+<script>
+const adminWa="62882008255252";
+const fmt=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n).replace("IDR","Rp");
+const packages=[
+{id:"single",type:"Satuan",title:"1 Session",sessions:1,hours:"60 menit",desc:"Sesi reguler untuk latihan singkat dan fokus.",prices:{1:150000,2:200000,3:250000,4:300000},original:null,accent:"#d7eb14"},
+{id:"starter",type:"Bundle",title:"Starter Package",sessions:4,hours:"4 jam",desc:"Cocok untuk pemain pemula yang ingin mengenal dasar-dasar padel.",prices:{1:550000,2:750000,3:950000,4:1150000},original:{1:600000,2:800000,3:1000000,4:1200000},accent:"#84b400"},
+{id:"development",type:"Bundle",title:"Development Package",sessions:8,hours:"8 jam",desc:"Cocok untuk meningkatkan teknik dan konsistensi permainan.",prices:{1:1000000,2:1400000,3:1800000,4:2200000},original:{1:1200000,2:1600000,3:2000000,4:2400000},accent:"#0f4b8f"},
+{id:"performance",type:"Bundle",title:"Performance Package",sessions:12,hours:"12 jam",desc:"Cocok untuk berkembang lebih cepat dan persiapan social tournament/kompetisi.",prices:{1:1400000,2:2000000,3:2600000,4:3200000},original:{1:1800000,2:2400000,3:3000000,4:3600000},accent:"#f06a00"},
+{id:"elite",type:"Bundle",title:"Elite Package",sessions:16,hours:"16 jam",desc:"Cocok untuk pemain serius meningkatkan performa dan program jangka panjang.",prices:{1:1800000,2:2600000,3:3400000,4:4200000},original:{1:2400000,2:3200000,3:4000000,4:4800000},accent:"#c71925"}
+];
+
+function qs(name){return new URLSearchParams(location.search).get(name)}
+const pkgId=qs('pkg')||qs('package')||'single';
+const pkg=packages.find(p=>p.id===pkgId)||packages[0];
+
+// Populate details
+document.getElementById('pkgType').textContent=pkg.type;
+document.getElementById('pkgTitle').textContent=pkg.title + ' — ' + pkg.sessions + ' sesi';
+document.getElementById('pkgDesc').textContent=pkg.hours + ' • ' + pkg.desc;
+
+const players=document.getElementById('players');
+function updatePrice(){
+  const count=players.value||1;
+  const total=pkg.prices[count];
+  document.getElementById('sumPackage').textContent=pkg.title + (pkg.original? (' (save '+fmt((pkg.original[count]||0)-total)+')') : '');
+  document.getElementById('sumTotal').textContent=fmt(total);
+  document.getElementById('pkgPrice').textContent=fmt(total);
+}
+players.onchange=updatePrice;updatePrice();
+
+// Form submit -> WhatsApp
+document.getElementById('bookingForm').onsubmit=e=>{
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const count=players.value||1;
+  const total=pkg.prices[count];
+  const date=document.getElementById('date').value||'Belum ditentukan';
+  const time=document.getElementById('time').value||'Belum ditentukan';
+  const level=document.getElementById('level').value;
+  const notes=document.getElementById('notes').value.trim()||'-';
+  const discountText=pkg.original?`Normal price: ${fmt(pkg.original[count]||0)}\nSavings: ${fmt((pkg.original[count]||0)-total)}\n` : '';
+  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
+  location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
+}
+</script>
+</body>
+</html>
