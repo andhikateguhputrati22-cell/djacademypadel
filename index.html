@@ -75,6 +75,7 @@ const packages=[
 {id:"elite",type:"Bundle",title:"Elite Package",sessions:16,hours:"16 jam",desc:"Cocok untuk pemain serius meningkatkan performa dan program jangka panjang.",prices:{1:1800000,2:2600000,3:3400000,4:4200000},original:{1:2400000,2:3200000,3:4000000,4:4800000},accent:"#c71925"}
 ];
 const singleList=document.getElementById("singleList"),bundleList=document.getElementById("bundleList"),packageSelect=document.getElementById("packageSelect"),players=document.getElementById("players");
+let activeTab="single";
 const bookingHeader=document.getElementById("booking"),bookingForm=document.getElementById("bookingForm");
 const sumPackage=document.getElementById("sumPackage"),sumPlayers=document.getElementById("sumPlayers"),sumNormal=document.getElementById("sumNormal"),sumSaving=document.getElementById("sumSaving"),sumTotal=document.getElementById("sumTotal"),normalLine=document.getElementById("normalLine"),savingLine=document.getElementById("savingLine"),stickyTotal=document.getElementById("stickyTotal");
 function selectedPackage(){return packages.find(p=>p.id===packageSelect.value)||packages[0]}
@@ -87,13 +88,26 @@ function toggleBooking(visible){
 function renderPackages(){
 packageSelect.innerHTML="";singleList.innerHTML="";bundleList.innerHTML="";
 packages.forEach(pkg=>{
-let option=document.createElement("option");option.value=pkg.id;option.textContent=`${pkg.title} - ${pkg.sessions} sesi`;packageSelect.appendChild(option);
 let discount=pkg.original?`<div class="disc"><span class="old">${fmt(pkg.original[1])}</span><span class="save">Save ${fmt(pkg.original[1]-pkg.prices[1])}</span></div>`:"";
 let card=document.createElement("article");card.className="pkg";card.style.setProperty("--accent",pkg.accent);
 card.innerHTML=`<div class="pkg-top"><h3>${pkg.title}</h3><span class="session">${pkg.sessions} sesi</span></div><div class="price">${fmt(pkg.prices[1])}</div>${discount}<p class="desc">${pkg.hours} • ${pkg.desc}</p><button class="choose" type="button" data-id="${pkg.id}">Pilih</button>`;
 (pkg.type==="Satuan"?singleList:bundleList).appendChild(card);
 });
+ renderPackageOptions();
 document.querySelectorAll(".choose").forEach(btn=>btn.addEventListener("click",()=>{packageSelect.value=btn.dataset.id;updateSummary();toggleBooking(true);document.getElementById("booking").scrollIntoView({behavior:"smooth",block:"start"})}));
+}
+function renderPackageOptions(){
+  packageSelect.innerHTML="";
+  const visiblePackages=packages.filter(pkg=>activeTab==="single"?pkg.type==="Satuan":pkg.type!="Satuan");
+  visiblePackages.forEach(pkg=>{
+    let option=document.createElement("option");
+    option.value=pkg.id;
+    option.textContent=`${pkg.title} - ${pkg.sessions} sesi`;
+    packageSelect.appendChild(option);
+  });
+  if(!visiblePackages.some(pkg=>pkg.id===packageSelect.value)){
+    packageSelect.value=visiblePackages[0]?.id||"";
+  }
 }
 function updateSummary(){
 let pkg=selectedPackage(),count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
@@ -101,8 +115,8 @@ sumPackage.textContent=pkg.title;sumPlayers.textContent=`${count} pemain`;
 if(normal){normalLine.classList.remove("hide");savingLine.classList.remove("hide");sumNormal.textContent=fmt(normal);sumSaving.textContent=fmt(normal-total)}else{normalLine.classList.add("hide");savingLine.classList.add("hide");sumNormal.textContent="-";sumSaving.textContent="-"}
 sumTotal.textContent=fmt(total);stickyTotal.textContent=fmt(total);
 }
-document.getElementById("tabSingle").onclick=()=>{tabSingle.classList.add("active");tabBundle.classList.remove("active");singleList.classList.remove("hide");bundleList.classList.add("hide");packageSelect.value="single";updateSummary()};
-document.getElementById("tabBundle").onclick=()=>{tabBundle.classList.add("active");tabSingle.classList.remove("active");bundleList.classList.remove("hide");singleList.classList.add("hide");if(packageSelect.value==="single")packageSelect.value="starter";updateSummary()};
+document.getElementById("tabSingle").onclick=()=>{tabSingle.classList.add("active");tabBundle.classList.remove("active");singleList.classList.remove("hide");bundleList.classList.add("hide");activeTab="single";renderPackageOptions();updateSummary()};
+document.getElementById("tabBundle").onclick=()=>{tabBundle.classList.add("active");tabSingle.classList.remove("active");bundleList.classList.remove("hide");singleList.classList.add("hide");activeTab="bundle";renderPackageOptions();updateSummary()};
 packageSelect.onchange=()=>{updateSummary();toggleBooking(true)};players.onchange=updateSummary;
 document.getElementById("bookingForm").onsubmit=e=>{
 e.preventDefault();
