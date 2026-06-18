@@ -1,0 +1,1 @@
+const CACHE='dj-clean-v1';self.addEventListener('fetch',e=>{});
