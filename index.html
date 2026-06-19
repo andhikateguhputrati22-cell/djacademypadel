@@ -136,7 +136,13 @@ function selectedPackage(){return packages.find(p=>p.id===currentSelection)||nul
 function updateBookingButton(){
   if(currentSelection){
     bookingBtn.classList.remove("disabled");
-    bookingBtn.setAttribute("href",`booking.html?pkg=${currentSelection}`);
+    const pkg = selectedPackage();
+    // route to different booking pages based on package type
+    if(pkg && pkg.type==="Satuan"){
+      bookingBtn.setAttribute("href",`booking.html?pkg=${currentSelection}`);
+    } else {
+      bookingBtn.setAttribute("href",`booking-bundle.html?pkg=${currentSelection}`);
+    }
     bookingBtn.removeAttribute("aria-disabled");
   } else {
     bookingBtn.classList.add("disabled");
