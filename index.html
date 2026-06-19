@@ -12,6 +12,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{--lime:#d7eb14;--green:#16a34a;--red:#d83434;--dark:#050505;--panel:#111722;--muted:#9aa6b5;--text:#0f172a}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 85% 0,rgba(215,235,20,.18),transparent 28%),linear-gradient(180deg,#050505,#071018 55%,#050505);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;padding-bottom:82px}button,input,select,textarea{font:inherit}.app{width:min(100%,480px);margin:auto;padding:14px}.top{background:linear-gradient(145deg,#080a0d,#101720);border:1px solid rgba(215,235,20,.22);border-radius:28px;padding:18px 16px;text-align:center;box-shadow:0 16px 36px rgba(0,0,0,.34)}.logo{width:min(78%,260px);max-height:160px;object-fit:contain;display:block;margin:0 auto 12px;border-radius:18px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.34))}.slogan{color:var(--lime);font-size:13px;font-weight:1000;letter-spacing:2.2px;text-transform:uppercase;margin:2px 0 12px}h1{font-size:25px;line-height:1.08;margin:0;letter-spacing:-.8px}.sub{margin:8px 0 0;color:#cbd5e1;font-size:13px;line-height:1.45}.hero-info{display:grid;grid-template-columns:1.3fr .9fr;gap:10px;margin-top:14px}.info{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:13px 12px;text-align:left}.info small{display:block;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}.info b{color:var(--lime);font-size:20px;line-height:1}.head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:20px 2px 10px}.head h2{margin:0;font-size:18px}.head span{font-size:12px;color:var(--muted)}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.tab{border:1px solid rgba(215,235,20,.35);background:#151b25;color:#fff;border-radius:16px;padding:12px;font-weight:1000;cursor:pointer}.tab.active{background:var(--lime);color:#111;border-color:var(--lime)}.cards{display:grid;gap:10px}.pkg{background:#fff;color:var(--text);border-radius:20px;padding:14px;border-left:7px solid var(--accent);box-shadow:0 12px 26px rgba(0,0,0,.22)}.pkg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.pkg h3{margin:0;font-size:17px;line-height:1.08;text-transform:uppercase}.session{background:#0f172a;color:#fff;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:1000;white-space:nowrap}.price{color:var(--accent);font-size:28px;font-weight:1000;margin:10px 0 4px;letter-spacing:-.8px}.disc{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}.old{color:#7b8492;font-size:14px;font-weight:900;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}.save{background:#edf7aa;color:#273200;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:1000}.desc{margin:0 0 10px;color:#4b5563;font-size:12px;line-height:1.35}.choose{width:100%;border:0;border-radius:14px;background:#0f172a;color:#fff;padding:12px;font-weight:1000;cursor:pointer}form{background:#fff;color:var(--text);border-radius:24px;padding:16px;box-shadow:0 16px 36px rgba(0,0,0,.34)}label{display:block;margin:12px 0 6px;font-size:13px;font-weight:900}input,select,textarea{width:100%;border:1px solid #d9e1ea;background:#f8fafc;border-radius:14px;padding:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--lime);box-shadow:0 0 0 4px rgba(215,235,20,.18)}textarea{min-height:72px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.summary{background:#0f172a;color:#fff;border-radius:18px;padding:13px;margin-top:14px}.line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(255,255,255,.18);padding:7px 0;font-size:13px}.line:last-child{border-bottom:0}.line strong,.line b{color:var(--lime);text-align:right}.strike{color:#dce7f6!important;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}.wa{width:100%;border:0;border-radius:16px;background:linear-gradient(135deg,#22c55e,#0b8f42);color:#fff;padding:15px;font-size:16px;font-weight:1000;margin-top:14px;cursor:pointer}.note{color:#64748b;font-size:11px;margin:9px 2px 0;line-height:1.4}.contact{margin:14px 0 4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:10px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}.contact a,.contact div{color:#fff;text-decoration:none;background:rgba(255,255,255,.03);border-radius:14px;padding:10px 12px;font-weight:700;flex:1 1 140px;min-width:140px}.contact a:hover{background:rgba(255,255,255,.08)}.contact small{display:block;color:var(--muted);font-weight:700;margin-bottom:2px;font-size:10px}.contact a, .contact div{font-size:13px}.sticky{position:fixed;z-index:10;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(5,5,5,.88);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.12)}.sticky-in{width:min(100%,480px);margin:auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.sticky small{display:block;color:var(--muted);font-weight:800}.sticky b{color:var(--lime);font-size:18px}.sticky a{color:#111;background:var(--lime);border-radius:14px;padding:12px 14px;text-decoration:none;font-weight:1000}.hide{opacity:0;visibility:hidden;max-height:0;overflow:hidden;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease,max-height .25s ease,visibility .25s ease}.show{opacity:1;visibility:visible;max-height:1200px;transform:none}@media(max-width:380px){.hero-info,.grid2{grid-template-columns:1fr}h1{font-size:23px}.price{font-size:25px}}
@@ -32,6 +33,19 @@
 .pkg.selected{outline:3px solid rgba(215,235,20,0.14);box-shadow:0 18px 40px rgba(0,0,0,0.36),0 6px 18px rgba(215,235,20,0.06);transform:translateY(-6px)}
 .pkg{transition:transform .18s ease,box-shadow .18s ease,outline .18s ease}
 .pkg .choose{transition:background .12s ease}
+</style>
+<style>
+.contact-wrapper{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;background:transparent;padding:0;margin:14px 0 4px}
+.contact-card{background:rgba(17,22,28,.6);padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:6px}
+.contact-card .title{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:var(--muted)}
+.contact-card .text{font-size:16px;font-weight:800;color:#fff}
+.contact-card a{color:inherit;text-decoration:none}
+.contact-icon{font-size:18px}
+.whatsapp{color:#25D366}
+.instagram{color:#E4405F}
+.location{color:#ff4f8b}
+@media(min-width:720px){.contact-wrapper{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.contact-wrapper{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -68,14 +82,26 @@
 <div class="line"><span>Total</span><b id="sumTotal">Rp0</b></div>
 </div>
 <button class="wa" type="submit">Kirim ke WhatsApp</button>
-<p class="note">Harga belum termasuk biaya sewa lapangan/court fee.</p>
+</p>
 </form>
 
-<section class="contact">
-<a href="https://wa.link/cno5sb" target="_blank" rel="noopener"><span class="contact-icon">📱</span><small>WhatsApp</small>0882008255252</a>
-<a href="https://instagram.com/dj.academypdl" target="_blank" rel="noopener"><span class="contact-icon">📷</span><small>Instagram</small>@dj.academy.padel</a>
-<div><span class="contact-icon">📍</span><small>Lokasi</small>Salatiga, Indonesia</div>
-</section>
+<div class="contact-wrapper">
+  <div class="contact-card">
+    <div class="title"><i class="fa-brands fa-whatsapp contact-icon whatsapp"></i><small>WhatsApp Admin</small></div>
+    <div class="text"><a href="https://wa.me/62882008255252" target="_blank" rel="noopener">0882008255252</a></div>
+  </div>
+
+  <div class="contact-card">
+    <div class="title"><i class="fa-brands fa-instagram contact-icon instagram"></i><small>Instagram</small></div>
+    <div class="text"><a href="https://instagram.com/dj.academypdl" target="_blank" rel="noopener">@dj.academy.padel</a></div>
+  </div>
+
+  <div class="contact-card">
+    <div class="title"><i class="fa-solid fa-location-dot contact-icon location"></i><small>Lokasi</small></div>
+    <div class="text"><a href="https://www.google.com/maps/search/Salatiga%2C+Indonesia" target="_blank" rel="noopener">Salatiga, Indonesia</a></div>
+  </div>
+
+</div>
 </main>
 
 <div class="sticky"><div class="sticky-in"><div><small>Total pilihan</small><b id="stickyTotal">Rp0</b></div><a href="#booking">Booking</a></div></div>
