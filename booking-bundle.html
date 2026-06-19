@@ -1,4 +1,4 @@
-<!doctype html>
+baut <!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -33,94 +33,5 @@ input,select,textarea{width:100%;padding:14px;border-radius:12px;border:1px soli
 <body>
 <main class="card">
   <div class="logo"><img src="dj_academy_transparent.png" alt="logo" style="height:44px"><div><div class="brand">DJ Academy</div><small style="color:#9aa6b5">Bundle Booking</small></div></div>
-  <h2 id="pkgTitle">-</h2>
+  *** End Patch
   <p id="pkgDesc" style="color:#9aa6b5"></p>
-
-  <form id="bundleForm">
-    <label for="name">Nama</label>
-    <input id="name" autocomplete="name" placeholder="Nama pemesan" required>
-
-    <label for="phone">No. WhatsApp</label>
-    <input id="phone" inputmode="tel" placeholder="08123456789" required>
-
-    <label for="packageSelect">Paket</label>
-    <select id="packageSelect"></select>
-
-    <label for="players">Pemain</label>
-    <select id="players"><option value="1">1 pemain</option><option value="2">2 pemain</option><option value="3">3 pemain</option><option value="4">4 pemain</option></select>
-
-    <label for="level">Kategori</label>
-    <select id="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Belum tahu</option></select>
-
-    <label>Hari tersedia untuk sesi (pilih minimal 1)</label>
-    <div class="days">
-      <label class="day"><input type="checkbox" name="days" value="Senin"> Senin</label>
-      <label class="day"><input type="checkbox" name="days" value="Selasa"> Selasa</label>
-      <label class="day"><input type="checkbox" name="days" value="Rabu"> Rabu</label>
-      <label class="day"><input type="checkbox" name="days" value="Kamis"> Kamis</label>
-      <label class="day"><input type="checkbox" name="days" value="Jumat"> Jumat</label>
-      <label class="day"><input type="checkbox" name="days" value="Sabtu"> Sabtu</label>
-      <label class="day"><input type="checkbox" name="days" value="Minggu"> Minggu</label>
-    </div>
-
-    <div class="radio-group">
-      <div style="font-weight:700;margin-bottom:8px">Status Booking Lapangan</div>
-      <label style="display:block"><input type="radio" name="courtBooked" value="yes"> Sudah booking lapangan</label>
-      <label style="display:block"><input type="radio" name="courtBooked" value="no"> Belum booking lapangan</label>
-    </div>
-
-    <label for="notes">Catatan</label>
-    <textarea id="notes" placeholder="Opsional"></textarea>
-
-    <div class="summary">
-      <div><small>Paket</small><div id="sumPackage">-</div></div>
-      <div style="margin-top:6px"><small>Total</small><div id="sumTotal">Rp0</div></div>
-    </div>
-
-    <button type="submit" class="button">Kirim ke WhatsApp</button>
-  </form>
-</main>
-
-<script>
-const adminWa="62882008255252";
-const fmt=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n).replace("IDR","Rp");
-function qs(name){return new URLSearchParams(location.search).get(name)}
-const packages=[
-{id:"single",type:"Satuan",title:"1 Session",sessions:1,hours:"60 menit",desc:"Sesi reguler untuk latihan singkat dan fokus.",prices:{1:150000,2:200000,3:250000,4:300000},original:null,accent:"#d7eb14"},
-{id:"starter",type:"Bundle Session",title:"Starter Package",sessions:4,hours:"4 jam",desc:"Cocok untuk pemain pemula yang ingin mengenal dasar-dasar padel.",prices:{1:550000,2:750000,3:950000,4:1150000},original:{1:600000,2:800000,3:1000000,4:1200000},accent:"#84b400"},
-{id:"development",type:"Bundle Session",title:"Development Package",sessions:8,hours:"8 jam",desc:"Cocok untuk meningkatkan teknik dan konsistensi permainan.",prices:{1:1000000,2:1400000,3:1800000,4:2200000},original:{1:1200000,2:1600000,3:2000000,4:2400000},accent:"#0f4b8f"},
-{id:"performance",type:"Bundle Session",title:"Performance Package",sessions:12,hours:"12 jam",desc:"Cocok untuk berkembang lebih cepat dan persiapan social tournament/kompetisi.",prices:{1:1400000,2:2000000,3:2600000,4:3200000},original:{1:1800000,2:2400000,3:3000000,4:3600000},accent:"#f06a00"},
-{id:"elite",type:"Bundle Session",title:"Elite Package",sessions:16,hours:"16 jam",desc:"Cocok untuk pemain serius meningkatkan performa dan program jangka panjang.",prices:{1:1800000,2:2600000,3:3400000,4:4200000},original:{1:2400000,2:3200000,3:4000000,4:4800000},accent:"#c71925"}
-];
-const pkgId=qs('pkg');
-const pkg=packages.find(p=>p.id===pkgId);
-const packageSelect=document.getElementById('packageSelect'),players=document.getElementById('players');
-if(!pkg){location.href='index.html'}
-document.getElementById('pkgTitle').textContent=pkg.title+' — '+pkg.sessions+' sesi';
-document.getElementById('pkgDesc').textContent=pkg.desc;
-function renderOptions(){packageSelect.innerHTML='';packages.filter(p=>p.type!=='Satuan').forEach(p=>{let opt=document.createElement('option');opt.value=p.id;opt.textContent=p.title;packageSelect.appendChild(opt)});packageSelect.value=pkg.id}
-function updatePrice(){const count=players.value;const total=pkg.prices[count];document.getElementById('sumTotal').textContent=fmt(total);document.getElementById('sumPackage').textContent=pkg.title}
-renderOptions();updatePrice();players.onchange=updatePrice;packageSelect.onchange=e=>{const id=e.target.value;location.href=`booking-bundle.html?pkg=${id}`}
-
-document.getElementById('bundleForm').onsubmit=e=>{
-  e.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  const phone=document.getElementById('phone').value.trim();
-  const selectedDays=Array.from(document.querySelectorAll('input[name="days"]:checked')).map(i=>i.value);
-  const courtBooked=document.querySelector('input[name="courtBooked"]:checked');
-  if(!name){alert('Nama harus diisi!');return}
-  if(!phone){alert('No. WhatsApp harus diisi!');return}
-  if(selectedDays.length===0){alert('Pilih minimal 1 hari untuk sesi bundle!');return}
-  if(!courtBooked){alert('Status booking lapangan harus dipilih!');return}
-  const count=players.value||1;
-  const total=pkg.prices[count];
-  const level=document.getElementById('level').value;
-  const notes=document.getElementById('notes').value.trim()||'-';
-  const courtBookedText=courtBooked.value==='yes'?'Sudah booking lapangan':'Belum booking lapangan';
-  const daysText=selectedDays.join(', ');
-  const text=`Halo DJ Academy, saya ingin booking coaching padel (bundle).\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\nTotal: ${fmt(total)}\nHari tersedia: ${daysText}\nLevel: ${level}\nStatus Lapangan: ${courtBookedText}\nCatatan: ${notes}\n\nMohon info ketersediaan jadwal untuk sesi bundle.`;
-  location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
-}
-</script>
-</body>
-</html>
