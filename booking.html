@@ -128,15 +128,24 @@ document.getElementById('bookingForm').onsubmit=e=>{
   e.preventDefault();
   const name=document.getElementById('name').value.trim();
   const phone=document.getElementById('phone').value.trim();
+  const date=document.getElementById('date').value;
+  const time=document.getElementById('time').value;
+  const courtBooked=document.querySelector('input[name="courtBooked"]:checked');
+  
+  // Validasi field wajib
+  if(!name){alert('Nama harus diisi!');return;}
+  if(!phone){alert('No. WhatsApp harus diisi!');return;}
+  if(!date){alert('Tanggal harus diisi!');return;}
+  if(!time){alert('Jam harus diisi!');return;}
+  if(!courtBooked){alert('Status booking lapangan harus dipilih!');return;}
+  
   const count=players.value||1;
   const total=pkg.prices[count];
-  const date=document.getElementById('date').value||'Belum ditentukan';
-  const time=document.getElementById('time').value||'Belum ditentukan';
   const level=document.getElementById('level').value;
   const notes=document.getElementById('notes').value.trim()||'-';
-  const courtBooked=document.querySelector('input[name="courtBooked"]:checked').value==='yes'?'Sudah booking lapangan':'Belum booking lapangan';
+  const courtBookedText=courtBooked.value==='yes'?'Sudah booking lapangan':'Belum booking lapangan';
   const discountText=pkg.original?`Normal price: ${fmt(pkg.original[count]||0)}\nSavings: ${fmt((pkg.original[count]||0)-total)}\n` : '';
-  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\nStatus Lapangan: ${courtBooked}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
+  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\nStatus Lapangan: ${courtBookedText}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
   location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
 }
 </script>
