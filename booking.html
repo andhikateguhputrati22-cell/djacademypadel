@@ -33,6 +33,9 @@ label{display:block;margin-top:18px;margin-bottom:8px;font-weight:700;color:#111
 input,select,textarea{width:100%;padding:14px 16px;border-radius:16px;border:1px solid rgba(15,23,42,.85);background:#f8fafc;color:#0f1720;box-shadow:inset 0 1px 2px rgba(15,23,42,.05);transition:border-color .2s ease,box-shadow .2s ease}
 input:focus,select:focus,textarea:focus{border-color:rgba(215,235,20,.9);box-shadow:0 0 0 4px rgba(215,235,20,.14);outline:none}
 textarea{min-height:110px;resize:vertical}
+.radio-group{margin-top:18px;margin-bottom:8px}
+.radio-group label{margin-top:0;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-weight:700;color:#111827;font-size:.95rem}
+.radio-group input[type="radio"]{margin:0;width:18px;height:18px;cursor:pointer}
 .summary{background:rgba(15,23,42,.95);padding:20px;border-radius:22px;margin-top:18px;color:#fff}
 .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .summary-item{font-size:.85rem;color:rgba(255,255,255,.72)}
@@ -76,6 +79,11 @@ button:active{transform:translateY(0)}
   <select id="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Not sure</option></select>
   <label for="notes">Catatan</label>
   <textarea id="notes" placeholder="Opsional"></textarea>
+  <div class="radio-group">
+    <div>Status Booking Lapangan</div>
+    <label><input type="radio" name="courtBooked" value="yes" required> Sudah booking lapangan</label>
+    <label><input type="radio" name="courtBooked" value="no" required> Belum booking lapangan</label>
+  </div>
   <div class="summary">
     <div><small>Paket</small><div id="sumPackage">-</div></div>
     <div style="margin-top:6px"><small>Total</small><div id="sumTotal">Rp0</div></div>
@@ -126,8 +134,9 @@ document.getElementById('bookingForm').onsubmit=e=>{
   const time=document.getElementById('time').value||'Belum ditentukan';
   const level=document.getElementById('level').value;
   const notes=document.getElementById('notes').value.trim()||'-';
+  const courtBooked=document.querySelector('input[name="courtBooked"]:checked').value==='yes'?'Sudah booking lapangan':'Belum booking lapangan';
   const discountText=pkg.original?`Normal price: ${fmt(pkg.original[count]||0)}\nSavings: ${fmt((pkg.original[count]||0)-total)}\n` : '';
-  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
+  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\nStatus Lapangan: ${courtBooked}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
   location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
 }
 </script>
