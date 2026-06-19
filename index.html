@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{--lime:#d7eb14;--green:#16a34a;--red:#d83434;--dark:#050505;--panel:#111722;--muted:#9aa6b5;--text:#0f172a}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 85% 0,rgba(215,235,20,.18),transparent 28%),linear-gradient(180deg,#050505,#071018 55%,#050505);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;padding-bottom:82px}button,input,select,textarea{font:inherit}.app{width:min(100%,480px);margin:auto;padding:14px}.top{background:linear-gradient(145deg,#080a0d,#101720);border:1px solid rgba(215,235,20,.22);border-radius:28px;padding:18px 16px;text-align:center;box-shadow:0 16px 36px rgba(0,0,0,.34)}.logo{width:min(78%,260px);max-height:160px;object-fit:contain;display:block;margin:0 auto 12px;border-radius:18px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.34))}.slogan{color:var(--lime);font-size:13px;font-weight:1000;letter-spacing:2.2px;text-transform:uppercase;margin:2px 0 12px}h1{font-size:25px;line-height:1.08;margin:0;letter-spacing:-.8px}.sub{margin:8px 0 0;color:#cbd5e1;font-size:13px;line-height:1.45}.hero-info{display:grid;grid-template-columns:1.3fr .9fr;gap:10px;margin-top:14px}.info{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:13px 12px;text-align:left}.info small{display:block;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}.info b{color:var(--lime);font-size:20px;line-height:1}.head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:20px 2px 10px}.head h2{margin:0;font-size:18px}.head span{font-size:12px;color:var(--muted)}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.tab{border:1px solid rgba(215,235,20,.35);background:#151b25;color:#fff;border-radius:16px;padding:12px;font-weight:1000;cursor:pointer}.tab.active{background:var(--lime);color:#111;border-color:var(--lime)}.cards{display:grid;gap:10px}.pkg{background:#fff;color:var(--text);border-radius:20px;padding:14px;border-left:7px solid var(--accent);box-shadow:0 12px 26px rgba(0,0,0,.22)}.pkg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.pkg h3{margin:0;font-size:17px;line-height:1.08;text-transform:uppercase}.session{background:#0f172a;color:#fff;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:1000;white-space:nowrap}.price{color:var(--accent);font-size:28px;font-weight:1000;margin:10px 0 4px;letter-spacing:-.8px}.disc{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}.old{color:#7b8492;font-size:14px;font-weight:900;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}.save{background:#edf7aa;color:#273200;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:1000}.desc{margin:0 0 10px;color:#4b5563;font-size:12px;line-height:1.35}.choose{width:100%;border:0;border-radius:14px;background:#0f172a;color:#fff;padding:12px;font-weight:1000;cursor:pointer}form{background:#fff;color:var(--text);border-radius:24px;padding:16px;box-shadow:0 16px 36px rgba(0,0,0,.34)}label{display:block;margin:12px 0 6px;font-size:13px;font-weight:900}input,select,textarea{width:100%;border:1px solid #d9e1ea;background:#f8fafc;border-radius:14px;padding:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--lime);box-shadow:0 0 0 4px rgba(215,235,20,.18)}textarea{min-height:72px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.summary{background:#0f172a;color:#fff;border-radius:18px;padding:13px;margin-top:14px}.line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(255,255,255,.18);padding:7px 0;font-size:13px}.line:last-child{border-bottom:0}.line strong,.line b{color:var(--lime);text-align:right}.strike{color:#dce7f6!important;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}.wa{width:100%;border:0;border-radius:16px;background:linear-gradient(135deg,#22c55e,#0b8f42);color:#fff;padding:15px;font-size:16px;font-weight:1000;margin-top:14px;cursor:pointer}.note{color:#64748b;font-size:11px;margin:9px 2px 0;line-height:1.4}.contact{margin:14px 0 4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:10px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}.contact a,.contact div{color:#fff;text-decoration:none;background:rgba(255,255,255,.03);border-radius:14px;padding:10px 12px;font-weight:700;flex:1 1 140px;min-width:140px}.contact a:hover{background:rgba(255,255,255,.08)}.contact small{display:block;color:var(--muted);font-weight:700;margin-bottom:2px;font-size:10px}.contact a, .contact div{font-size:13px}.sticky{position:fixed;z-index:10;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(5,5,5,.88);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.12)}.sticky-in{width:min(100%,480px);margin:auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.sticky small{display:block;color:var(--muted);font-weight:800}.sticky b{color:var(--lime);font-size:18px}.sticky a{color:#111;background:var(--lime);border-radius:14px;padding:12px 14px;text-decoration:none;font-weight:1000}.hide{opacity:0;visibility:hidden;max-height:0;overflow:hidden;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease,max-height .25s ease,visibility .25s ease}.show{opacity:1;visibility:visible;max-height:1200px;transform:none}@media(max-width:380px){.hero-info,.grid2{grid-template-columns:1fr}h1{font-size:23px}.price{font-size:25px}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 85% 0,rgba(215,235,20,.18),transparent 28%),linear-gradient(180deg,#050505,#071018 55%,#050505);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;padding-bottom:82px}button,input,select,textarea{font:inherit}.app{width:min(100%,480px);margin:auto;padding:14px}.top{background:linear-gradient(145deg,#080a0d,#101720);border:1px solid rgba(215,235,20,.22);border-radius:28px;padding:18px 16px;text-align:center;box-shadow:0 16px 36px rgba(0,0,0,.34)}.logo{width:min(78%,260px);max-height:160px;object-fit:contain;display:block;margin:0 auto 12px;border-radius:18px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.34))}.slogan{color:var(--lime);font-size:13px;font-weight:1000;letter-spacing:2.2px;text-transform:uppercase;margin:2px 0 12px}h1{font-size:25px;line-height:1.08;margin:0;letter-spacing:-.8px}.sub{margin:8px 0 0;color:#cbd5e1;font-size:13px;line-height:1.45}.hero-info{display:grid;grid-template-columns:1.3fr .9fr;gap:10px;margin-top:14px}.info{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:13px 12px;text-align:left}.info small{display:block;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}.info b{color:var(--lime);font-size:20px;line-height:1}.head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:20px 2px 10px}.head h2{margin:0;font-size:18px}.head span{font-size:12px;color:var(--muted)}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.tab{border:1px solid rgba(215,235,20,.35);background:#151b25;color:#fff;border-radius:16px;padding:12px;font-weight:1000;cursor:pointer}.tab.active{background:var(--lime);color:#111;border-color:var(--lime)}.cards{display:grid;gap:10px}.pkg{background:#fff;color:var(--text);border-radius:20px;padding:14px;border-left:7px solid var(--accent);box-shadow:0 12px 26px rgba(0,0,0,.22)}.pkg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.pkg h3{margin:0;font-size:17px;line-height:1.08;text-transform:uppercase}.session{background:#0f172a;color:#fff;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:1000;white-space:nowrap}.price{color:var(--accent);font-size:28px;font-weight:1000;margin:10px 0 4px;letter-spacing:-.8px}.disc{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}.old{color:#7b8492;font-size:14px;font-weight:900;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}.save{background:#edf7aa;color:#273200;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:1000}.desc{margin:0 0 10px;color:#4b5563;font-size:12px;line-height:1.35}.choose{width:100%;border:0;border-radius:14px;background:#0f172a;color:#fff;padding:12px;font-weight:1000;cursor:pointer}form{background:#fff;color:var(--text);border-radius:24px;padding:16px;box-shadow:0 16px 36px rgba(0,0,0,.34)}label{display:block;margin:12px 0 6px;font-size:13px;font-weight:900}input,select,textarea{width:100%;border:1px solid #d9e1ea;background:#f8fafc;border-radius:14px;padding:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--lime);box-shadow:0 0 0 4px rgba(215,235,20,.18)}textarea{min-height:72px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.summary{background:#0f172a;color:#fff;border-radius:18px;padding:13px;margin-top:14px}.line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(255,255,255,.18);padding:7px 0;font-size:13px}.line:last-child{border-bottom:0}.line strong,.line b{color:var(--lime);text-align:right}.strike{color:#dce7f6!important;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}.wa{width:100%;border:0;border-radius:16px;background:linear-gradient(135deg,#22c55e,#0b8f42);color:#fff;padding:15px;font-size:16px;font-weight:1000;margin-top:14px;cursor:pointer}.note{color:#64748b;font-size:11px;margin:9px 2px 0;line-height:1.4}.contact{margin:14px 0 4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:10px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}.contact a,.contact div{color:#fff;text-decoration:none;background:rgba(255,255,255,.03);border-radius:14px;padding:10px 12px;font-weight:700;flex:1 1 140px;min-width:140px}.contact a:hover{background:rgba(255,255,255,.08)}.contact small{display:block;color:var(--muted);font-weight:700;margin-bottom:2px;font-size:10px}.contact a, .contact div{font-size:13px}.sticky{position:fixed;z-index:10;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(5,5,5,.88);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.12)}.sticky-in{width:min(100%,480px);margin:auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.sticky small{display:block;color:var(--muted);font-weight:800}.sticky b{color:var(--lime);font-size:18px}.sticky a{color:#111;background:var(--lime);border-radius:14px;padding:12px 14px;text-decoration:none;font-weight:1000}.sticky a.disabled{background:rgba(215,235,20,.35);color:rgba(17,22,28,.8);pointer-events:none}.hide{opacity:0;visibility:hidden;max-height:0;overflow:hidden;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease,max-height .25s ease,visibility .25s ease}.show{opacity:1;visibility:visible;max-height:1200px;transform:none}@media(max-width:380px){.hero-info,.grid2{grid-template-columns:1fr}h1{font-size:23px}.price{font-size:25px}}
 </style>
 <style>
 .cards.horizontal{display:flex;gap:12px;overflow-x:auto;padding:8px 8px 8px 8px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;align-items:stretch;margin-bottom:0}
@@ -103,7 +103,7 @@
 </div>
 </main>
 
-<div class="sticky"><div class="sticky-in"><div><small>Total pilihan</small><b id="stickyTotal">Rp0</b></div><a href="#booking">Booking</a></div></div>
+<div class="sticky"><div class="sticky-in"><div><small>Total pilihan</small><b id="stickyTotal">Rp0</b></div><a id="bookingBtn" class="disabled" href="#" aria-disabled="true">Booking</a></div></div>
 
 <script>
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
@@ -116,11 +116,23 @@ const packages=[
 {id:"performance",type:"Bundle",title:"Performance Package",sessions:12,hours:"12 jam",desc:"Cocok untuk berkembang lebih cepat dan persiapan social tournament/kompetisi.",prices:{1:1400000,2:2000000,3:2600000,4:3200000},original:{1:1800000,2:2400000,3:3000000,4:3600000},accent:"#f06a00"},
 {id:"elite",type:"Bundle",title:"Elite Package",sessions:16,hours:"16 jam",desc:"Cocok untuk pemain serius meningkatkan performa dan program jangka panjang.",prices:{1:1800000,2:2600000,3:3400000,4:4200000},original:{1:2400000,2:3200000,3:4000000,4:4800000},accent:"#c71925"}
 ];
-const singleList=document.getElementById("singleList"),bundleList=document.getElementById("bundleList"),packageSelect=document.getElementById("packageSelect"),players=document.getElementById("players");
+const singleList=document.getElementById("singleList"),bundleList=document.getElementById("bundleList"),packageSelect=document.getElementById("packageSelect"),players=document.getElementById("players"),bookingBtn=document.getElementById("bookingBtn");
 let activeTab="single";
+let currentSelection=null;
 const bookingHeader=document.getElementById("booking"),bookingForm=document.getElementById("bookingForm");
 const sumPackage=document.getElementById("sumPackage"),sumPlayers=document.getElementById("sumPlayers"),sumNormal=document.getElementById("sumNormal"),sumSaving=document.getElementById("sumSaving"),sumTotal=document.getElementById("sumTotal"),normalLine=document.getElementById("normalLine"),savingLine=document.getElementById("savingLine"),stickyTotal=document.getElementById("stickyTotal");
-function selectedPackage(){return packages.find(p=>p.id===packageSelect.value)||packages[0]}
+function selectedPackage(){return packages.find(p=>p.id===currentSelection)||null}
+function updateBookingButton(){
+  if(currentSelection){
+    bookingBtn.classList.remove("disabled");
+    bookingBtn.setAttribute("href",`booking.html?pkg=${currentSelection}`);
+    bookingBtn.removeAttribute("aria-disabled");
+  } else {
+    bookingBtn.classList.add("disabled");
+    bookingBtn.setAttribute("href","#");
+    bookingBtn.setAttribute("aria-disabled","true");
+  }
+}
 function toggleBooking(visible){
   bookingHeader.classList.toggle("hide",!visible);
   bookingForm.classList.toggle("hide",!visible);
@@ -135,18 +147,17 @@ let card=document.createElement("article");card.className="pkg";card.style.setPr
 card.innerHTML=`<div class="pkg-top"><h3>${pkg.title}</h3><span class="session">${pkg.sessions} sesi</span></div><div class="price">${fmt(pkg.prices[1])}</div>${discount}<p class="desc">${pkg.hours} • ${pkg.desc}</p><button class="choose" type="button" data-id="${pkg.id}">Pilih</button>`;
 card.dataset.id = pkg.id;
 (pkg.type==="Satuan"?singleList:bundleList).appendChild(card);
-// make the whole card clickable and interactive
-  card.addEventListener('click', ()=>{
-    location.href = `booking.html?pkg=${pkg.id}`;
-  });
+card.addEventListener('click', ()=>{
+  selectPackage(pkg.id);
+});
 });
  renderPackageOptions();
-document.querySelectorAll(".choose").forEach(btn=>btn.addEventListener("click",(e)=>{e.stopPropagation();location.href = `booking.html?pkg=${btn.dataset.id}`}));
+document.querySelectorAll(".choose").forEach(btn=>btn.addEventListener("click",(e)=>{e.stopPropagation();selectPackage(btn.dataset.id)}));
 }
 
 function updateCardSelection(){
   document.querySelectorAll('.pkg').forEach(c=>{
-    c.classList.toggle('selected', c.dataset.id===packageSelect.value);
+    c.classList.toggle('selected', c.dataset.id===currentSelection);
   });
 }
 function renderPackageOptions(){
@@ -163,23 +174,47 @@ function renderPackageOptions(){
   }
 }
 function updateSummary(){
-let pkg=selectedPackage(),count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
+let pkg=selectedPackage();
+if(!pkg){
+  sumPackage.textContent='-';
+  sumPlayers.textContent='-';
+  normalLine.classList.add("hide");
+  savingLine.classList.add("hide");
+  sumNormal.textContent="-";
+  sumSaving.textContent="-";
+  sumTotal.textContent='Rp0';
+  stickyTotal.textContent='Rp0';
+  return;
+}
+let count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
 sumPackage.textContent=pkg.title;sumPlayers.textContent=`${count} pemain`;
 if(normal){normalLine.classList.remove("hide");savingLine.classList.remove("hide");sumNormal.textContent=fmt(normal);sumSaving.textContent=fmt(normal-total)}else{normalLine.classList.add("hide");savingLine.classList.add("hide");sumNormal.textContent="-";sumSaving.textContent="-"}
 sumTotal.textContent=fmt(total);stickyTotal.textContent=fmt(total);
 }
+function selectPackage(pkgId){
+  currentSelection=pkgId;
+  activeTab=packages.find(p=>p.id===pkgId)?.type==="Satuan"?"single":"bundle";
+  renderPackageOptions();
+  packageSelect.value=pkgId;
+  updateSummary();
+  updateCardSelection();
+  updateBookingButton();
+}
 document.getElementById("tabSingle").onclick=()=>{tabSingle.classList.add("active");tabBundle.classList.remove("active");singleList.classList.remove("hide");bundleList.classList.add("hide");activeTab="single";renderPackageOptions();updateSummary()};
 document.getElementById("tabBundle").onclick=()=>{tabBundle.classList.add("active");tabSingle.classList.remove("active");bundleList.classList.remove("hide");singleList.classList.add("hide");activeTab="bundle";renderPackageOptions();updateSummary()};
-packageSelect.onchange=()=>{updateSummary();toggleBooking(true);updateCardSelection()};players.onchange=updateSummary;
+packageSelect.onchange=()=>{currentSelection=packageSelect.value;updateSummary();toggleBooking(true);updateCardSelection();updateBookingButton()};
+players.onchange=updateSummary;
 document.getElementById("bookingForm").onsubmit=e=>{
-e.preventDefault();
-let pkg=selectedPackage(),count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
-let name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),date=document.getElementById("date").value||"Belum ditentukan",time=document.getElementById("time").value||"Belum ditentukan",level=document.getElementById("level").value,notes=document.getElementById("notes").value.trim()||"-";
-let discountText=normal?`Harga normal: ${fmt(normal)}\nSavings: ${fmt(normal-total)}\n`:"";
-let text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nLevel: ${level}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
-location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
+  e.preventDefault();
+  let pkg=selectedPackage();
+  if(!pkg) return;
+  let count=players.value,total=pkg.prices[count],normal=pkg.original?pkg.original[count]:null;
+  let name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),date=document.getElementById("date").value||"Belum ditentukan",time=document.getElementById("time").value||"Belum ditentukan",level=document.getElementById("level").value,notes=document.getElementById("notes").value.trim()||"-";
+  let discountText=normal?`Harga normal: ${fmt(normal)}\nSavings: ${fmt(normal-total)}\n`:"";
+  let text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nLevel: ${level}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
+  location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
 };
-renderPackages();updateSummary();
+renderPackages();updateSummary();updateBookingButton();
 </script>
 </body>
 </html>
