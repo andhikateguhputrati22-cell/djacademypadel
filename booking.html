@@ -97,47 +97,47 @@ button:active{transform:translateY(0)}
 <script>
 const adminWa="62882008255252";
 const fmt=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n).replace("IDR","Rp");
-const packages=[
-{id:"single",type:"Single Session",title:"Single Session",sessions:1,hours:"60 menit",desc:"Sesi reguler untuk latihan singkat dan fokus.",prices:{1:150000,2:200000,3:250000,4:300000},original:null,accent:"#d7eb14"},
-{id:"starter",type:"Bundle Session",title:"Starter Package",sessions:4,hours:"4 jam",desc:"Cocok untuk pemain pemula yang ingin mengenal dasar-dasar padel.",prices:{1:550000,2:750000,3:950000,4:1150000},original:{1:600000,2:800000,3:1000000,4:1200000},accent:"#84b400"},
-{id:"development",type:"Bundle Session",title:"Development Package",sessions:8,hours:"8 jam",desc:"Cocok untuk meningkatkan teknik dan konsistensi permainan.",prices:{1:1000000,2:1400000,3:1800000,4:2200000},original:{1:1200000,2:1600000,3:2000000,4:2400000},accent:"#0f4b8f"},
-{id:"performance",type:"Bundle Session",title:"Performance Package",sessions:12,hours:"12 jam",desc:"Cocok untuk berkembang lebih cepat dan persiapan social tournament/kompetisi.",prices:{1:1400000,2:2000000,3:2600000,4:3200000},original:{1:1800000,2:2400000,3:3000000,4:3600000},accent:"#f06a00"},
-{id:"elite",type:"Bundle Session",title:"Elite Package",sessions:16,hours:"16 jam",desc:"Cocok untuk pemain serius meningkatkan performa dan program jangka panjang.",prices:{1:1800000,2:2600000,3:3400000,4:4200000},original:{1:2400000,2:3200000,3:4000000,4:4800000},accent:"#c71925"}
-];
-
-function qs(name){return new URLSearchParams(location.search).get(name)}
-const pkgId=qs('pkg')||qs('package')||'single';
-const pkg=packages.find(p=>p.id===pkgId)||packages[0];
-
-// Populate details
-document.getElementById('pkgType').textContent=pkg.type;
-document.getElementById('pkgTitle').textContent=pkg.title + ' — ' + pkg.sessions + ' sesi';
-document.getElementById('pkgDesc').textContent=pkg.hours + ' • ' + pkg.desc;
-
-const players=document.getElementById('players');
-function updatePrice(){
-  const count=players.value||1;
-  const total=pkg.prices[count];
-  document.getElementById('sumPackage').textContent=pkg.title + (pkg.original? (' (save '+fmt((pkg.original[count]||0)-total)+')') : '');
-  document.getElementById('sumTotal').textContent=fmt(total);
-  document.getElementById('pkgPrice').textContent=fmt(total);
-}
-players.onchange=updatePrice;updatePrice();
-
-// Form submit -> WhatsApp
-document.getElementById('bookingForm').onsubmit=e=>{
-  e.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  const phone=document.getElementById('phone').value.trim();
-  const date=document.getElementById('date').value;
-  const time=document.getElementById('time').value;
-  const courtBooked=document.querySelector('input[name="courtBooked"]:checked');
-  
-  // Validasi field wajib
-  if(!name){alert('Nama harus diisi!');return;}
-  if(!phone){alert('No. WhatsApp harus diisi!');return;}
-  if(!date){alert('Tanggal harus diisi!');return;}
-  if(!time){alert('Jam harus diisi!');return;}
+<style>
+:root{--bg:#f6f7f8;--panel:#ffffff;--text:#111827;--muted:#6b7280;--accent:#111827}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;min-height:100vh;background:var(--bg);color:var(--text);padding:20px}
+.container{max-width:520px;margin:0 auto}
+.back{color:var(--muted);display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:22px;transition:color .15s ease}
+.back:hover{color:var(--text)}
+.hero{margin-bottom:18px;text-align:center}
+.logo-row{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;justify-content:center}
+.logo-row img{width:48px;height:48px;object-fit:contain;border-radius:12px}
+.logo-text{display:flex;flex-direction:column;gap:2px}
+.logo-text .brand{font-size:1rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.logo-text .slogan{font-size:.95rem;color:var(--muted);line-height:1.25}
+.overline{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.hero-title{font-size:1.6rem;line-height:1.05;margin:6px 0 6px;color:var(--text);font-weight:800}
+.hero-copy{margin:0;color:var(--muted);line-height:1.5}
+.card{background:var(--panel);color:var(--text);border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(16,24,40,.06)}
+.card + .card{margin-top:14px}
+#pkgCard{padding:18px}
+.pkg-type{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+#pkgTitle{font-size:1.2rem;margin:0;color:var(--text);line-height:1.05;font-weight:800}
+.pkg-desc{margin-top:8px;color:var(--muted);font-size:.95rem;line-height:1.6}
+.pkg-price{margin-top:12px;font-size:1.2rem;font-weight:800;color:var(--text)}
+label{display:block;margin-top:12px;margin-bottom:6px;font-weight:700;color:var(--text);font-size:.95rem}
+input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e6e9ee;background:#fff;color:var(--text);box-shadow:none;transition:border-color .15s ease,box-shadow .15s ease}
+input[type="date"],input[type="time"]{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e6e9ee;background:#fff;color:var(--text);box-sizing:border-box}
+input:focus,select:focus,textarea:focus{border-color:#d1d5db;box-shadow:0 6px 20px rgba(16,24,40,.06);outline:none}
+textarea{min-height:100px;resize:vertical}
+.radio-group{margin-top:12px;margin-bottom:6px}
+.radio-group label{margin-top:0;margin-bottom:10px;display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);font-size:.95rem}
+.radio-group input[type="radio"]{margin:0;width:18px;height:18px;cursor:pointer}
+.summary{background:#0f172a;color:#fff;padding:18px;border-radius:12px;margin-top:14px}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.summary-item{font-size:.9rem;color:rgba(255,255,255,.85)}
+.summary-item strong{display:block;margin-top:6px;font-size:1rem;color:#fff}
+.button,button{display:inline-flex;align-items:center;justify-content:center;width:100%;background:linear-gradient(135deg,#111,#444);color:#fff;padding:12px 16px;border:none;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.button:hover,button:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(16,24,40,.08)}
+button:active{transform:translateY(0)}
+@media(max-width:540px){body{padding:16px}.hero-title{font-size:1.4rem}.card{padding:16px}.summary-grid{grid-template-columns:1fr}}
+</style>
   if(!courtBooked){alert('Status booking lapangan harus dipilih!');return;}
   
   const count=players.value||1;
