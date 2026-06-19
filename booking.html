@@ -145,7 +145,7 @@ document.getElementById('bookingForm').onsubmit=e=>{
   const notes=document.getElementById('notes').value.trim()||'-';
   const courtBookedText=courtBooked.value==='yes'?'Sudah booking lapangan':'Belum booking lapangan';
   const discountText=pkg.original?`Normal price: ${fmt(pkg.original[count]||0)}\nSavings: ${fmt((pkg.original[count]||0)-total)}\n` : '';
-  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n${discountText}Total: ${fmt(total)}\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\nStatus Lapangan: ${courtBookedText}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
+  const text=`Halo DJ Academy, saya ingin booking coaching padel.\n\nNama: ${name}\nNo. WhatsApp: ${phone}\n\nPaket: ${pkg.title}\nJumlah sesi: ${pkg.sessions} sesi (${pkg.hours})\nJumlah pemain: ${count}\n\n${discountText}Total: ${fmt(total)}\n\nTanggal: ${date}\nJam: ${time}\nKategori: ${level}\n\nStatus Lapangan: ${courtBookedText}\nCatatan: ${notes}\n\nHarga belum termasuk court fee. Mohon info ketersediaan jadwal.`;
   location.href=`https://wa.me/${adminWa}?text=${encodeURIComponent(text)}`;
 }
 </script>
